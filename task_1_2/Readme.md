@@ -33,6 +33,8 @@ Tests are located in `GraphUtilsTest.java` testing following data structures:
 - binary tree
 - tree
 - Directed Acyclic Graph 1
+
   ![My Image](./docs/dag1.png)
 - Directed Acyclic Graph 2
+
   ![My Image](./docs/dag2.png)
