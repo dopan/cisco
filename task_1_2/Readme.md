@@ -21,7 +21,10 @@ Therefore, the most general data structure that fits into these assumptions is D
 - have the same liner time complexity and in most cases better memory complexity (even though in the worst case it's linear as well)
 - in Direct Acyclic Graphs DFS has no disadvantage compared to BFS (cannot run into cycle issues)
 
-`List<List<GNode>> paths(GNode node)`
+`List<List<GNode>> paths(GNode node)` uses Depth-FirstSearch like algorithm for searching possible paths with following logic:
+- if current node is leaf, we have just found a path.
+- if node is not leaf, add node to current path and recursively calls method for all children
+On a way back up the graph (when all children of current node were recursively processed) it's important to remove current node from current path.
 
 ## Tests
 Tests are located in `GraphUtilsTest.java` testing following data structures:
@@ -30,15 +33,6 @@ Tests are located in `GraphUtilsTest.java` testing following data structures:
 - binary tree
 - tree
 - Directed Acyclic Graph 1
-![Alt text](/docs/dag1.png)
+  ![My Image](./docs/dag1.png)
 - Directed Acyclic Graph 2
-![Alt text](/docs/dag2.png)
-
-
-
-
-
-
-
-
-
+  ![My Image](./docs/dag2.png)
