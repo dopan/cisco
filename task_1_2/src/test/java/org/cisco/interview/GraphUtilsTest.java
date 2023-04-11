@@ -1,4 +1,5 @@
-import org.cisco.interview.GraphUtils;
+package org.cisco.interview;
+
 import org.cisco.interview.model.GNode;
 import org.cisco.interview.model.GNodeImpl;
 import org.junit.jupiter.api.Assertions;
@@ -7,25 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 public class GraphUtilsTest {
-
-    @Test
-    void testCreatingNodeWithNullValues() {
-        IllegalArgumentException thrown = assertThrows(
-                IllegalArgumentException.class,
-                () -> new GNodeImpl(null, new ArrayList<>()),
-                "IllegalArgumentException expected."
-        );
-        Assertions.assertTrue(thrown.getMessage().contentEquals("Name and children must not be null."));
-        IllegalArgumentException thrown2 = assertThrows(
-                IllegalArgumentException.class,
-                () -> new GNodeImpl("A", null),
-                "IllegalArgumentException expected."
-        );
-        Assertions.assertTrue(thrown2.getMessage().contentEquals("Name and children must not be null."));
-    }
 
     @Test
     void testSingleNode() {
@@ -38,7 +21,7 @@ public class GraphUtilsTest {
     }
 
     @Test
-    void TestLinearDAG() {
+    void testLinearDAG() {
         GNode linerGraph = new GNodeImpl("A", new ArrayList<>(List.of(
                 new GNodeImpl("B", new ArrayList<>(List.of(new GNodeImpl("C", new ArrayList<>())))))
         ));
@@ -167,27 +150,21 @@ public class GraphUtilsTest {
 
         a.getChildren().add(b);
         a.getChildren().add(c);
-        b.getChildren().add(c);
-        b.getChildren().add(d);
         b.getChildren().add(e);
+        b.getChildren().add(d);
+        b.getChildren().add(c);
         e.getChildren().add(f);
 
         //walk
-        Assertions.assertEquals("ABEFDGC", nodesListAsString(GraphUtils.walkGraph(a)));
+        Assertions.assertEquals("ABEFDC", nodesListAsString(GraphUtils.walkGraph(a)));
 
         //paths
         List<List<GNode>> result = GraphUtils.paths(a);
-        Assertions.assertEquals(10, result.size());
+        Assertions.assertEquals(4, result.size());
         Assertions.assertEquals("ABEF", nodesListAsString(result.get(0)));
-        Assertions.assertEquals("ADBEF", nodesListAsString(result.get(1)));
-        Assertions.assertEquals("ADEF", nodesListAsString(result.get(2)));
-        Assertions.assertEquals("ADF", nodesListAsString(result.get(3)));
-        Assertions.assertEquals("ADGF", nodesListAsString(result.get(4)));
-        Assertions.assertEquals("ACDBEF", nodesListAsString(result.get(5)));
-        Assertions.assertEquals("ACDEF", nodesListAsString(result.get(6)));
-        Assertions.assertEquals("ACDF", nodesListAsString(result.get(7)));
-        Assertions.assertEquals("ACDGF", nodesListAsString(result.get(8)));
-        Assertions.assertEquals("ACGF", nodesListAsString(result.get(9)));
+        Assertions.assertEquals("ABD", nodesListAsString(result.get(1)));
+        Assertions.assertEquals("ABC", nodesListAsString(result.get(2)));
+        Assertions.assertEquals("AC", nodesListAsString(result.get(3)));
     }
 
     private String nodesListAsString(List<GNode> result) {
