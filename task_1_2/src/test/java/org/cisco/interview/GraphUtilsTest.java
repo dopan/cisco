@@ -2,20 +2,21 @@ package org.cisco.interview;
 
 import org.cisco.interview.model.GNode;
 import org.cisco.interview.model.GNodeImpl;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GraphUtilsTest {
 
     @Test
     void testSingleNode() {
         GNode node = new GNodeImpl("A", new ArrayList<>());
-        Assertions.assertEquals("A", nodesListAsString(GraphUtils.walkGraph(node)));
+        assertEquals("A", nodesListAsString(GraphUtils.walkGraph(node)));
 
-        Assertions.assertEquals(new ArrayList<>(List.of(new ArrayList<>(List.of(
+        assertEquals(new ArrayList<>(List.of(new ArrayList<>(List.of(
                         new GNodeImpl("A", new ArrayList<>()))))),
                 GraphUtils.paths(node));
     }
@@ -25,10 +26,10 @@ public class GraphUtilsTest {
         GNode linerGraph = new GNodeImpl("A", new ArrayList<>(List.of(
                 new GNodeImpl("B", new ArrayList<>(List.of(new GNodeImpl("C", new ArrayList<>())))))
         ));
-        Assertions.assertEquals("ABC", nodesListAsString(GraphUtils.walkGraph(linerGraph)));
+        assertEquals("ABC", nodesListAsString(GraphUtils.walkGraph(linerGraph)));
         List<List<GNode>> result = GraphUtils.paths(linerGraph);
-        Assertions.assertEquals(1, result.size());
-        Assertions.assertEquals("ABC", nodesListAsString(result.get(0)));
+        assertEquals(1, result.size());
+        assertEquals("ABC", nodesListAsString(result.get(0)));
     }
 
     @Test
@@ -51,15 +52,15 @@ public class GraphUtilsTest {
         e.getChildren().add(h);
 
         // walk
-        Assertions.assertEquals("ABDEGHCF", nodesListAsString(GraphUtils.walkGraph(a)));
+        assertEquals("ABDEGHCF", nodesListAsString(GraphUtils.walkGraph(a)));
 
         // paths
         List<List<GNode>> result = GraphUtils.paths(a);
-        Assertions.assertEquals(4, result.size());
-        Assertions.assertEquals("ABD", nodesListAsString(result.get(0)));
-        Assertions.assertEquals("ABEG", nodesListAsString(result.get(1)));
-        Assertions.assertEquals("ABEH", nodesListAsString(result.get(2)));
-        Assertions.assertEquals("ACF", nodesListAsString(result.get(3)));
+        assertEquals(4, result.size());
+        assertEquals("ABD", nodesListAsString(result.get(0)));
+        assertEquals("ABEG", nodesListAsString(result.get(1)));
+        assertEquals("ABEH", nodesListAsString(result.get(2)));
+        assertEquals("ACF", nodesListAsString(result.get(3)));
     }
 
     @Test
@@ -85,18 +86,18 @@ public class GraphUtilsTest {
         g.getChildren().add(j);
 
         //walk
-        Assertions.assertEquals("ABCEFGHIJD", nodesListAsString(GraphUtils.walkGraph(a)));
+        assertEquals("ABCEFGHIJD", nodesListAsString(GraphUtils.walkGraph(a)));
 
         //paths
         List<List<GNode>> result = GraphUtils.paths(a);
-        Assertions.assertEquals(7, result.size());
-        Assertions.assertEquals("AB", nodesListAsString(result.get(0)));
-        Assertions.assertEquals("ACE", nodesListAsString(result.get(1)));
-        Assertions.assertEquals("ACF", nodesListAsString(result.get(2)));
-        Assertions.assertEquals("ACGH", nodesListAsString(result.get(3)));
-        Assertions.assertEquals("ACGI", nodesListAsString(result.get(4)));
-        Assertions.assertEquals("ACGJ", nodesListAsString(result.get(5)));
-        Assertions.assertEquals("AD", nodesListAsString(result.get(6)));
+        assertEquals(7, result.size());
+        assertEquals("AB", nodesListAsString(result.get(0)));
+        assertEquals("ACE", nodesListAsString(result.get(1)));
+        assertEquals("ACF", nodesListAsString(result.get(2)));
+        assertEquals("ACGH", nodesListAsString(result.get(3)));
+        assertEquals("ACGI", nodesListAsString(result.get(4)));
+        assertEquals("ACGJ", nodesListAsString(result.get(5)));
+        assertEquals("AD", nodesListAsString(result.get(6)));
     }
 
     @Test
@@ -122,21 +123,21 @@ public class GraphUtilsTest {
         g.getChildren().add(f);
 
         //walk
-        Assertions.assertEquals("ABEFDGC", nodesListAsString(GraphUtils.walkGraph(a)));
+        assertEquals("ABEFDGC", nodesListAsString(GraphUtils.walkGraph(a)));
 
         //paths
         List<List<GNode>> result = GraphUtils.paths(a);
-        Assertions.assertEquals(10, result.size());
-        Assertions.assertEquals("ABEF", nodesListAsString(result.get(0)));
-        Assertions.assertEquals("ADBEF", nodesListAsString(result.get(1)));
-        Assertions.assertEquals("ADEF", nodesListAsString(result.get(2)));
-        Assertions.assertEquals("ADF", nodesListAsString(result.get(3)));
-        Assertions.assertEquals("ADGF", nodesListAsString(result.get(4)));
-        Assertions.assertEquals("ACDBEF", nodesListAsString(result.get(5)));
-        Assertions.assertEquals("ACDEF", nodesListAsString(result.get(6)));
-        Assertions.assertEquals("ACDF", nodesListAsString(result.get(7)));
-        Assertions.assertEquals("ACDGF", nodesListAsString(result.get(8)));
-        Assertions.assertEquals("ACGF", nodesListAsString(result.get(9)));
+        assertEquals(10, result.size());
+        assertEquals("ABEF", nodesListAsString(result.get(0)));
+        assertEquals("ADBEF", nodesListAsString(result.get(1)));
+        assertEquals("ADEF", nodesListAsString(result.get(2)));
+        assertEquals("ADF", nodesListAsString(result.get(3)));
+        assertEquals("ADGF", nodesListAsString(result.get(4)));
+        assertEquals("ACDBEF", nodesListAsString(result.get(5)));
+        assertEquals("ACDEF", nodesListAsString(result.get(6)));
+        assertEquals("ACDF", nodesListAsString(result.get(7)));
+        assertEquals("ACDGF", nodesListAsString(result.get(8)));
+        assertEquals("ACGF", nodesListAsString(result.get(9)));
     }
 
     @Test
@@ -156,15 +157,15 @@ public class GraphUtilsTest {
         e.getChildren().add(f);
 
         //walk
-        Assertions.assertEquals("ABEFDC", nodesListAsString(GraphUtils.walkGraph(a)));
+        assertEquals("ABEFDC", nodesListAsString(GraphUtils.walkGraph(a)));
 
         //paths
         List<List<GNode>> result = GraphUtils.paths(a);
-        Assertions.assertEquals(4, result.size());
-        Assertions.assertEquals("ABEF", nodesListAsString(result.get(0)));
-        Assertions.assertEquals("ABD", nodesListAsString(result.get(1)));
-        Assertions.assertEquals("ABC", nodesListAsString(result.get(2)));
-        Assertions.assertEquals("AC", nodesListAsString(result.get(3)));
+        assertEquals(4, result.size());
+        assertEquals("ABEF", nodesListAsString(result.get(0)));
+        assertEquals("ABD", nodesListAsString(result.get(1)));
+        assertEquals("ABC", nodesListAsString(result.get(2)));
+        assertEquals("AC", nodesListAsString(result.get(3)));
     }
 
     private String nodesListAsString(List<GNode> result) {
