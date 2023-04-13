@@ -18,4 +18,4 @@ Not only documents are returned in JSON, but also tags associated with each docu
 ### Known bug
 More tags can have the same name. In our dataset 'carnivore' is tag both for plants and humans... 
 
-If we than search for humans, documents with sub-tags for humans are searched as well and one of the sub-tag is 'carnivore' - which matches also plant! 
+If we than search for humans, documents with sub-tags for humans are searched as well and one of the sub-tag is 'carnivore' - which matches also the plant! 
