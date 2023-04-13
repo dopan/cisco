@@ -5,9 +5,12 @@ To compile project and run tests with maven `mvn clean test`.
 To run the server `mvn spring-boot:run`
 (Port 8080 must not be in use or changed in /src/main/resources/application.properties)
 
+Not only documents are returned in JSON, but also tags associated with them
+
 ## Assumptions
-Documents should be unique by uri, but the constraint is not checked (there is no way to add new documents).
-Tag name is limited to 50 characters.
+
+- documents should be unique by uri, but the constraint is not checked (there is no way to add new documents)
+- tag name is limited to 50 characters
 
 ## Test
 `curl "http://localhost:8080/taggedContent?tag=humans"`
