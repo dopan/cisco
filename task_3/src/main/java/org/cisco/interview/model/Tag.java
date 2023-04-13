@@ -15,6 +15,7 @@ public class Tag {
     }
 
     public Tag(String name, List<Tag> subTags, List<Document> documents) {
+        validateTagName(name);
         this.name = name;
         this.subTags = subTags;
         this.documents = documents;
@@ -30,5 +31,10 @@ public class Tag {
 
     public List<Document> getDocuments() {
         return documents;
+    }
+
+    private void validateTagName(String name) {
+        if (name == null || name.length() > 50)
+            throw new IllegalArgumentException("Tag name cannot be null and length is limited to maximum 50 characters.");
     }
 }

@@ -3,36 +3,16 @@
 To compile project and run tests with maven `mvn clean test`.
 
 To run the server `mvn spring-boot:run`
-
 (Port 8080 must not be in use or changed in /src/main/resources/application.properties)
 
 ## Assumptions
+Documents should be unique by uri, but the constraint is not checked (there is no way to add new documents).
+Tag name is limited to 50 characters.
 
-Documents are unique by uri. Tags do not have any unique check - we can have same subtags 
+## Test
+`curl "http://localhost:8080/taggedContent?tag=humans"`
 
-## Solution
-`org.cisco.interview.GraphUtils.java` contains both methods `List<GNode> walkGraph(GNode node)` and `List<List<GNode>> paths(GNode node)`.
+### Known bug
+More tags can have the same name. In our dataset 'carnivore' is tag both for plants and humans... 
 
-`List<GNode> walkGraph(GNode node)` uses Depth-First-Search over Breadth-First-Search because:
-- it is easier to understand and implement (follows directions of a graph)
-- have the same linear time complexity as BFS and in most cases better memory complexity (even though in the worst case it's linear as well)
-- in Direct Acyclic Graphs DFS has no disadvantage compared to BFS (cannot run into cycle issues)
-
-`List<List<GNode>> paths(GNode node)` uses Depth-First-Search like algorithm for searching possible paths with following logic:
-- if current node is leaf, we have just found a path and save it
-- if node is not leaf, add node to current path and recursively calls method for all children
-- on the way back up the graph (when all children of current node were recursively processed) it's important not forget to remove current node from current path
-
-## Tests
-Tests are located in `org.cisco.interview.GraphUtilsTest.java` and are working with following data structures:
-- single node
-- linear graph
-- binary tree
-- tree
-- Directed Acyclic Graph 1
-
-  ![My Image](./docs/dag1.png)
-
-- Directed Acyclic Graph 2
-
-  ![My Image](./docs/dag2.png)
+If we than search for humans, documents with sub-tags for humans are searched as well and one of the sub-tag is 'carnivore' - which matches also plant! 
