@@ -5,7 +5,7 @@ To compile project and run tests with maven `mvn clean test`.
 To run the server `mvn spring-boot:run`
 (Port `8080` must not be in use or changed in `/src/main/resources/application.properties`)
 
-Not only documents are returned in JSON, but also tags associated with them
+Not only documents are returned in JSON, but also tags associated with each document.
 
 ## Assumptions
 
