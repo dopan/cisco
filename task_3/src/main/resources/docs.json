@@ -1,0 +1,30 @@
+[
+  {
+    "uri": "https://en.wikipedia.org/wiki/Dog",
+    "tags": ["animals", "mammals", "2-legs"]
+  },
+  {
+    "uri": "https://en.wikipedia.org/wiki/Cattle",
+    "tags": ["4-legs"]
+  },
+  {
+    "uri": "https://en.wikipedia.org/wiki/Finch",
+    "tags": ["animals", "singers", "birds"]
+  },
+  {
+    "uri": "https://en.wikipedia.org/wiki/Venus_flytrap",
+    "tags": ["plants", "carnivore"]
+  },
+  {
+    "uri": "Jirka",
+    "tags": ["humans", "vegetarians"]
+  },
+  {
+    "uri": "Petr",
+    "tags": ["humans", "carnivore"]
+  },
+  {
+    "uri": "Honza",
+    "tags": ["humans"]
+  }
+]

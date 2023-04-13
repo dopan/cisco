@@ -1,0 +1,55 @@
+[
+  {
+    "name": "animals",
+    "subTags": [
+      {
+        "name": "mammals",
+        "subTags": [
+          {
+            "name": "2-legs",
+            "subTags": []
+          },
+          {
+            "name": "4-legs",
+            "subTags": []
+          }
+        ]
+      },
+      {
+        "name": "birds",
+        "subTags": [
+          {
+            "name": "singers",
+            "subTags": []
+          },
+          {
+            "name": "non-singers",
+            "subTags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "plants",
+    "subTags": [
+      {
+        "name": "carnivore",
+        "subTags": []
+      }
+    ]
+  },
+  {
+    "name": "humans",
+    "subTags": [
+      {
+        "name": "carnivore",
+        "subTags": []
+      },
+      {
+        "name": "vegetarians",
+        "subTags": []
+      }
+    ]
+  }
+]
