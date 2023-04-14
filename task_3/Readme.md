@@ -8,14 +8,9 @@ To run the server `mvn spring-boot:run`
 Not only documents are returned in JSON, but also tags associated with each document.
 
 ## Assumptions
-<<<<<<< HEAD
 
-- documents should be unique by uri, but the constraint is not checked (there is no way to add new documents)
-- tag name is limited to 50 characters
-=======
 Documents should be unique by uri, which is enforced by using HashSet with proper hashCode method.
 Tag name is limited to 50 characters.
->>>>>>> 6937fbe (Structuring code a bit better)
 
 ## Test
 `curl "http://localhost:8080/taggedContent?tag=humans"`
