@@ -14,13 +14,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class TagToDocsControllerTest {
+public class DocumentControllerTest {
 
     @Autowired
     private MockMvc mvc;
 
     @Test
-    void testTagToDocsController() throws Exception {
+    void testGetDocumentsByTag() throws Exception {
         mvc.perform(get("/taggedContent?tag=mammals")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
